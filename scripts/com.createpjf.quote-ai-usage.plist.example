@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.ajax.quote0-burnout</string>
+    <string>com.createpjf.quote-ai-usage</string>
     <key>Program</key>
-    <string>/Users/ajax/Projects/quote0-burnout/run.sh</string>
+    <string>/Users/you/Library/Application Support/quote-ai-usage/run.sh</string>
     <key>StartCalendarInterval</key>
     <array>
         <dict><key>Minute</key><integer>0</integer></dict>
@@ -24,8 +24,8 @@
     <key>RunAtLoad</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>/tmp/quote0-burnout.log</string>
+    <string>/tmp/quote-ai-usage.log</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/quote0-burnout.log</string>
+    <string>/tmp/quote-ai-usage.log</string>
 </dict>
 </plist>

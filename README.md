@@ -127,13 +127,18 @@ A launchd example is included for macOS:
 项目包含 macOS launchd 示例：
 
 ```bash
-cp scripts/com.ajax.quote0-burnout.plist.example ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.ajax.quote0-burnout.plist
+mkdir -p "$HOME/Library/Application Support/quote-ai-usage"
+rsync -a --delete --exclude ".git" ./ "$HOME/Library/Application Support/quote-ai-usage/"
+
+cp scripts/com.createpjf.quote-ai-usage.plist.example ~/Library/LaunchAgents/com.createpjf.quote-ai-usage.plist
+plutil -lint ~/Library/LaunchAgents/com.createpjf.quote-ai-usage.plist
+launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/com.createpjf.quote-ai-usage.plist
+launchctl kickstart -k "gui/$(id -u)/com.createpjf.quote-ai-usage"
 ```
 
-Edit the plist paths before loading it. The sample schedule runs every 5 minutes.
+Edit the plist paths before loading it. The sample schedule runs every 5 minutes. On macOS, avoid running the scheduled script directly from `~/Documents`, `~/Desktop`, or `~/Downloads`; launchd may be blocked by privacy permissions.
 
-加载前请先修改 plist 里的本地路径。示例配置每 5 分钟运行一次。
+加载前请先修改 plist 里的本地路径。示例配置每 5 分钟运行一次。macOS 上建议不要直接从 `~/Documents`、`~/Desktop` 或 `~/Downloads` 运行定时脚本；launchd 可能会被隐私权限拦截。
 
 ## Development / 开发
 
@@ -156,4 +161,3 @@ Key files:
 ## License / 开源协议
 
 MIT License. See [LICENSE](LICENSE).
-
